@@ -21,8 +21,21 @@ export function logger(constructor: Function) {
     return newContructor;
 }
 
-export function writable(isWritable: boolean): any {
+export function writable(isWritable: boolean) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         descriptor.writable = isWritable;
+    };
+}
+
+export function timeout(millis: number): any {
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function Timeout(...args) {
+            setTimeout(() => {
+                originalMethod.apply(this, args);
+            }, millis);
+        };
+
+        return descriptor;
     };
 }

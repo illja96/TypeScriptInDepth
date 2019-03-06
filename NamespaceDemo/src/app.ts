@@ -253,6 +253,7 @@ fLibrarian.name = 'Anna';
 (<any>fLibrarian).printLabrarian();
 
 // Task 23
+console.log('Task 23:');
 try {
     const writableLibrarian = new UniversityLibrarian();
     writableLibrarian.assistFaculty = () => console.log('Changed assistFaculty');
@@ -263,3 +264,8 @@ try {
 catch (exeption) {
     console.log(exeption);
 }
+
+// Task 24
+console.log('Task 24:');
+const timeoutEncyclopedia = new RefBook(1, 'RefBook', 2019);
+timeoutEncyclopedia.printItem();
