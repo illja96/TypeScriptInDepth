@@ -3,6 +3,7 @@ import util = Utility.Fees;
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian } from './intefaces';
 import { RefBook, ReferenceItem, UniversityLibrarian } from './classes/index';
+import { purge } from './lib/utility-functions';
 
 function getAllBooks(): Book[] {
     let books = [
@@ -206,3 +207,18 @@ const maxBooks = Utility.maxBooksAllowed(12);
 console.log(`Max books: ${maxBooks}`);
 const fees = util.calculateLateFee(612);
 console.log(`Fees: ${fees}`);
+
+// Task 18
+console.log('Task 18:');
+const inventory = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+];
+const purgedInventory = purge(inventory);
+console.log(purgedInventory);
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const purgedNumbers = purge(numbers);
+console.log(purgedNumbers);

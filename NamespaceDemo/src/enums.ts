@@ -3,5 +3,6 @@ export enum Category {
     CSS,
     HTML,
     TS,
-    Angular
+    Angular,
+    Software
   }
