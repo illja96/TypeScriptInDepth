@@ -1,4 +1,4 @@
-function getAllBooks(): any[] {
+function getAllBooks(): Book[] {
   let books = [
     { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JS },
     { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false, category: Category.JS },
@@ -49,7 +49,7 @@ function logBookTitles(bookTitles: string[]): void {
   console.log(bookTitles);
 }
 
-function getBookById(id: number): any {
+function getBookById(id: number): Book {
   const books = getAllBooks();
   const book = books.find((x) => x.id == id);
 
@@ -84,18 +84,30 @@ function getTitles(authorOrAvaliable: string | boolean): string[] {
 
   const books = getAllBooks();
   for (const book of books) {
-    if (typeof authorOrAvaliable === 'string' &&
-      book.title === authorOrAvaliable) {
-      books.push(book.title);
+    if (typeof authorOrAvaliable === 'string' && book.title === authorOrAvaliable) {
+      bookTitles.push(book.title);
     }
 
-    if (typeof authorOrAvaliable === 'boolean' &&
-      book.available == authorOrAvaliable) {
+    if (typeof authorOrAvaliable === 'boolean' && book.available == authorOrAvaliable) {
       bookTitles.push(book.title);
     }
   }
 
   return bookTitles;
+}
+
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  available: boolean;
+  category: Category;
+  pages?: number;
+  markDamaged?: (reason: string) => void;
+}
+
+function printBook(book: Book) {
+  console.log(`${book.title} by ${book.author}`);
 }
 
 // Task 1
@@ -138,3 +150,17 @@ myBooks.forEach((x) => console.log(x));
 console.log('Task 6:');
 const checkedOutBooks = getTitles(false);
 checkedOutBooks.forEach((x) => console.log(x));
+
+// Task 7
+console.log('Task 7:');
+const myBook = {
+  id: 5,
+  title: 'Colors, Backgrounds and Gradients',
+  author: 'Eric A. Meyer',
+  available: true,
+  category: Category.CSS,
+  pages: 200,
+  markDamaged: (reason: string) => console.log(`Damaged: ${reason}`)
+}
+printBook(myBook);
+myBook.markDamaged('missing back cover');
