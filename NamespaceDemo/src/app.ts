@@ -239,3 +239,9 @@ const magazineShelf = new Shelf<Magazine>();
 magazines.forEach((x) => magazineShelf.add(x));
 const firstMagazoneInShelf = magazineShelf.getFirst();
 console.log(firstMagazoneInShelf);
+
+// Task 20
+console.log('Task 20:');
+magazineShelf.printTitles();
+const findedMagazine = magazineShelf.find('Five Points');
+console.log(findedMagazine);

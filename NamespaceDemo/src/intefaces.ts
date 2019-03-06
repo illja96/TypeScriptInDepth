@@ -33,4 +33,8 @@ export interface Magazine {
     publisher: string;
 }
 
+export interface ShelfItem {
+    title: string;
+}
+
 export interface Logger extends DamageLogger { };
