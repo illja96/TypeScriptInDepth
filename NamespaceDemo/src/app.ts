@@ -251,3 +251,15 @@ console.log('Task 22:');
 const fLibrarian = new UniversityLibrarian();
 fLibrarian.name = 'Anna';
 (<any>fLibrarian).printLabrarian();
+
+// Task 23
+try {
+    const writableLibrarian = new UniversityLibrarian();
+    writableLibrarian.assistFaculty = () => console.log('Changed assistFaculty');
+    writableLibrarian.assistFaculty();
+    writableLibrarian.teachCommunity = () => console.log('Changed teachCommunity');
+    writableLibrarian.teachCommunity();
+}
+catch (exeption) {
+    console.log(exeption);
+}

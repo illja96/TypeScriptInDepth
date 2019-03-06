@@ -1,4 +1,4 @@
-export function sealed(constructor: Function): void {
+export function sealed(constructor: Function) {
     console.log('Sealing the constructor');
 
     Object.seal(constructor);
@@ -19,4 +19,10 @@ export function logger(constructor: Function) {
     newContructor.prototype = originalContructor.prototype;
 
     return newContructor;
+}
+
+export function writable(isWritable: boolean): any {
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        descriptor.writable = isWritable;
+    };
 }
