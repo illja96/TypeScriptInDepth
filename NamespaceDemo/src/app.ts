@@ -1,5 +1,8 @@
 import { Utility } from './utility-functions';
 import util = Utility.Fees;
+import { Category } from './enums';
+import { Book, Logger, Author, Librarian } from './intefaces';
+import { UniversityLibrarian, ReferenceItem } from './classes';
 
 // Task 14
 console.log('Task 14:');
