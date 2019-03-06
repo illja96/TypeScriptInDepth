@@ -245,3 +245,9 @@ console.log('Task 20:');
 magazineShelf.printTitles();
 const findedMagazine = magazineShelf.find('Five Points');
 console.log(findedMagazine);
+
+// Task 22
+console.log('Task 22:');
+const fLibrarian = new UniversityLibrarian();
+fLibrarian.name = 'Anna';
+(<any>fLibrarian).printLabrarian();
