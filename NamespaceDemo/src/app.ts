@@ -1,12 +1,12 @@
 import { Utility } from './utility-functions';
 import util = Utility.Fees;
 import { Category } from './enums';
-import { Book, Logger, Author, Librarian } from './intefaces';
-import { RefBook, ReferenceItem, UniversityLibrarian } from './classes/index';
+import { Book, Logger, Author, Librarian, Magazine } from './intefaces';
+import { RefBook, ReferenceItem, UniversityLibrarian, Shelf } from './classes/index';
 import { purge } from './lib/utility-functions';
 
 function getAllBooks(): Book[] {
-    let books = [
+    const books: Book[] = [
         { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JS },
         { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false, category: Category.JS },
         { id: 3, title: 'CSS Secrets', author: 'Lea Verou', available: true, category: Category.CSS },
@@ -146,7 +146,7 @@ checkedOutBooks.forEach((x) => console.log(x));
 
 // Task 7
 console.log('Task 7:');
-const myBook = {
+const myBook: Book = {
     id: 5,
     title: 'Colors, Backgrounds and Gradients',
     author: 'Eric A. Meyer',
@@ -210,7 +210,7 @@ console.log(`Fees: ${fees}`);
 
 // Task 18
 console.log('Task 18:');
-const inventory = [
+const inventory: Book[] = [
     { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
     { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
@@ -222,3 +222,20 @@ console.log(purgedInventory);
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const purgedNumbers = purge(numbers);
 console.log(purgedNumbers);
+
+// Task 19
+console.log('Task 19:');
+const bookShelf = new Shelf<Book>();
+inventory.forEach((x) => bookShelf.add(x));
+const firstBookInShelf = bookShelf.getFirst();
+console.log(firstBookInShelf);
+
+const magazines: Magazine[] = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+];
+const magazineShelf = new Shelf<Magazine>();
+magazines.forEach((x) => magazineShelf.add(x));
+const firstMagazoneInShelf = magazineShelf.getFirst();
+console.log(firstMagazoneInShelf);

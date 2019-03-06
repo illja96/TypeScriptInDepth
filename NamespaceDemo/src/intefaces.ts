@@ -28,4 +28,9 @@ export interface Librarian extends Person {
     assistCustomer(custName: string): void;
 }
 
+export interface Magazine {
+    title: string;
+    publisher: string;
+}
+
 export interface Logger extends DamageLogger { };
