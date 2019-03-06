@@ -147,7 +147,7 @@ class ReferenceItem {
   year: number;
   */
 
-  private static department: string = 'Department';
+  static department: string = 'Department';
 
   private _publisher: string;
   get publisher(): string {
@@ -165,13 +165,25 @@ class ReferenceItem {
   }
   */
 
-  constructor(public newTitle: string, private newYear: number) {
-    this['title'] = newTitle;
-    this['year'] = newYear;
+  constructor(public title: string, protected year: number) { }
+
+  printItem(): void {
+    console.log(`${this.title} was published in ${this.year} by ${ReferenceItem.department}`);
+  }
+}
+
+class Encyclopedia extends ReferenceItem {
+  edition: number;
+
+  constructor(newEdition: number, newTitle: string, newYear: number) {
+    super(newTitle, newYear);
+
+    this.edition = newEdition;
   }
 
   printItem(): void {
-    console.log(`${this['title']} was published in ${this['year']} by ${ReferenceItem.department}`);
+    console.log(`${this.title} was published in ${this.year} by ${ReferenceItem.department}`);
+    console.log(`Edition: ${this.edition} (${this.year})`);
   }
 }
 
@@ -261,3 +273,8 @@ const ref = new ReferenceItem('Title', 2019);
 ref.printItem();
 ref.publisher = 'Publisher';
 console.log(ref.publisher);
+
+// Task 12
+console.log('Task 12:');
+const refBook = new Encyclopedia(1, 'Title', 2019);
+refBook.printItem();
