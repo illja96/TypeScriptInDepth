@@ -56,6 +56,10 @@ function getBookById(id: number): any {
   return book;
 }
 
+function createCustomerId(id: number, name: string): string {
+  return `${id} ${name}`;
+}
+
 // Task 1
 console.log('Task 1:');
 const books = getAllBooks();
@@ -71,3 +75,12 @@ console.log('Task 3:');
 books.forEach((x) => console.log(x.title));
 const bookById = getBookById(3);
 console.log(bookById);
+
+// Taks 3
+console.log('Task 4:');
+const customer1 = createCustomerId(10, 'Ann');
+console.log(customer1);
+let idGenerator = (id: number, name: string) => `${id} ${name}`;
+idGenerator = createCustomerId;
+const customer2 = idGenerator(11, 'Anna');
+console.log(customer2);
