@@ -9,7 +9,7 @@ function getAllBooks(): any[] {
   return books;
 }
 
-function logFirstAvailable(books: any[]): void {
+function logFirstAvailable(books: any[] = getAllBooks()): void {
   console.log(`Books count: ${books.length}`);
 
   for (const book of books) {
@@ -30,7 +30,7 @@ enum Category {
   Angular
 }
 
-function getBookTitlesByCategory(category: Category): string[] {
+function getBookTitlesByCategory(category: Category = Category.JS): string[] {
   const books = getAllBooks();
   const booksInCategory = new Array<string>();
 
@@ -60,6 +60,25 @@ function createCustomerId(id: number, name: string): string {
   return `${id} ${name}`;
 }
 
+function createCustomer(name: string, age?: number, city?: string) {
+  console.log(`${name} ${age ? age : ''} ${city ? city : ''}`);
+}
+
+function сheckoutBooks(customer: string, bookIds: number[]): string[] {
+  const avaliableBooks = new Array<string>();
+
+  for (const bookId of bookIds) {
+    const book = getBookById(bookId);
+    if (!book.available) {
+      continue;
+    }
+
+    avaliableBooks.push(book.title);
+  }
+
+  return avaliableBooks;
+}
+
 // Task 1
 console.log('Task 1:');
 const books = getAllBooks();
@@ -76,7 +95,7 @@ books.forEach((x) => console.log(x.title));
 const bookById = getBookById(3);
 console.log(bookById);
 
-// Taks 3
+// Taks 4
 console.log('Task 4:');
 const customer1 = createCustomerId(10, 'Ann');
 console.log(customer1);
@@ -84,3 +103,14 @@ let idGenerator = (id: number, name: string) => `${id} ${name}`;
 idGenerator = createCustomerId;
 const customer2 = idGenerator(11, 'Anna');
 console.log(customer2);
+
+// Task 5
+console.log('Task 5:');
+createCustomer('Ann1');
+createCustomer('Ann2', 18);
+createCustomer('Ann3', 18, 'Kharkiv');
+const booksDefaultCategory = getBookTitlesByCategory();
+logBookTitles(booksDefaultCategory);
+logFirstAvailable();
+const myBooks = сheckoutBooks('Ann', [1, 2, 4]);
+myBooks.forEach((x) => console.log(x));
