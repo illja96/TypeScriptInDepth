@@ -141,7 +141,7 @@ class UniversityLibrarian implements Librarian {
   }
 }
 
-class ReferenceItem {
+abstract class ReferenceItem {
   /*
   title: string;
   year: number;
@@ -170,6 +170,8 @@ class ReferenceItem {
   printItem(): void {
     console.log(`${this.title} was published in ${this.year} by ${ReferenceItem.department}`);
   }
+
+  abstract printCitation(): void;
 }
 
 class Encyclopedia extends ReferenceItem {
@@ -184,6 +186,10 @@ class Encyclopedia extends ReferenceItem {
   printItem(): void {
     console.log(`${this.title} was published in ${this.year} by ${ReferenceItem.department}`);
     console.log(`Edition: ${this.edition} (${this.year})`);
+  }
+
+  printCitation() {
+    console.log(`${this.title} - ${this.year}`);
   }
 }
 
@@ -269,12 +275,18 @@ favoriteLibrarian.assistCustomer('Ann');
 
 // Task 11
 console.log('Task 11:');
-const ref = new ReferenceItem('Title', 2019);
+/*
+const ref = new ReferenceItem('ReferenceItem', 2019);
 ref.printItem();
-ref.publisher = 'Publisher';
+ref.publisher = 'ReferenceItem publisher';
 console.log(ref.publisher);
+*/
 
 // Task 12
 console.log('Task 12:');
-const refBook = new Encyclopedia(1, 'Title', 2019);
+const refBook = new Encyclopedia(1, 'Encyclopedia', 2019);
 refBook.printItem();
+
+// Task 13
+console.log('Task 13:');
+refBook.printCitation();
