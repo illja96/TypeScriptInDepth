@@ -118,6 +118,20 @@ function DamageLoggerImplementation(reason: string): void {
   console.log(`Damaged: ${reason}`)
 }
 
+interface Person {
+  name: string;
+  email: string;
+}
+
+interface Author extends Person {
+  numBooksPublished: number;
+}
+
+interface Librarian extends Person {
+  department: string;
+  assistCustomer(custName: string): void;
+}
+
 // Task 1
 console.log('Task 1:');
 const books = getAllBooks();
@@ -177,3 +191,17 @@ myBook.markDamaged('missing back cover');
 console.log('Task 8:')
 const logDamage = DamageLoggerImplementation;
 logDamage('missing back cover');
+
+// Task 9
+console.log('Task 9:');
+let favoriteAuthor: Author = {
+  'name': 'author',
+  'email': 'author@email.com',
+  'numBooksPublished': 0
+};
+let favoriteLibrarian: Librarian = {
+  'name': 'librarian',
+  'email': 'librarian@email.com',
+  'department': 'library',
+  'assistCustomer': (custName: string) => { }
+};
