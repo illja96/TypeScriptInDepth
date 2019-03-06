@@ -10,6 +10,11 @@ export class UniversityLibrarian implements Librarian {
 }
 
 export abstract class ReferenceItem {
+    /*
+    title: string;
+    year: number;
+    */
+
     static department: string = 'Department';
 
     private _publisher: string;
@@ -19,6 +24,14 @@ export abstract class ReferenceItem {
     set publisher(newPublisher: string) {
         this._publisher = newPublisher;
     }
+
+    /*
+    constructor(newTitle: string, newYear: number) {
+      console.log('Creating a new ReferenceItem...');
+      this.title = newTitle;
+      this.year = newYear;
+    }
+    */
 
     constructor(public title: string, protected year: number) { }
 
