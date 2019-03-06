@@ -103,11 +103,19 @@ interface Book {
   available: boolean;
   category: Category;
   pages?: number;
-  markDamaged?: (reason: string) => void;
+  markDamaged?: DamageLogger;
 }
 
 function printBook(book: Book) {
   console.log(`${book.title} by ${book.author}`);
+}
+
+interface DamageLogger {
+  (reason: string): void;
+}
+
+function DamageLoggerImplementation(reason: string): void {
+  console.log(`Damaged: ${reason}`)
 }
 
 // Task 1
@@ -164,3 +172,8 @@ const myBook = {
 }
 printBook(myBook);
 myBook.markDamaged('missing back cover');
+
+// Task 8
+console.log('Task 8:')
+const logDamage = DamageLoggerImplementation;
+logDamage('missing back cover');
