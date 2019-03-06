@@ -79,6 +79,25 @@ function сheckoutBooks(customer: string, bookIds: number[]): string[] {
   return avaliableBooks;
 }
 
+function getTitles(authorOrAvaliable: string | boolean): string[] {
+  const bookTitles = new Array<string>();
+
+  const books = getAllBooks();
+  for (const book of books) {
+    if (typeof authorOrAvaliable === 'string' &&
+      book.title === authorOrAvaliable) {
+      books.push(book.title);
+    }
+
+    if (typeof authorOrAvaliable === 'boolean' &&
+      book.available == authorOrAvaliable) {
+      bookTitles.push(book.title);
+    }
+  }
+
+  return bookTitles;
+}
+
 // Task 1
 console.log('Task 1:');
 const books = getAllBooks();
@@ -114,3 +133,8 @@ logBookTitles(booksDefaultCategory);
 logFirstAvailable();
 const myBooks = сheckoutBooks('Ann', [1, 2, 4]);
 myBooks.forEach((x) => console.log(x));
+
+// Task 6
+console.log('Task 6:');
+const checkedOutBooks = getTitles(false);
+checkedOutBooks.forEach((x) => console.log(x));
