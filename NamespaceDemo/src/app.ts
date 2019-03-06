@@ -2,8 +2,7 @@ import { Utility } from './utility-functions';
 import util = Utility.Fees;
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian } from './intefaces';
-import { UniversityLibrarian, ReferenceItem } from './classes';
-import RefBook from './encyclopedia';
+import { RefBook, ReferenceItem, UniversityLibrarian } from './classes/index';
 
 function getAllBooks(): Book[] {
     let books = [
