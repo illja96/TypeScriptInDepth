@@ -4,6 +4,7 @@ import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './intefaces';
 import { RefBook, ReferenceItem, UniversityLibrarian, Shelf } from './classes/index';
 import { purge } from './lib/utility-functions';
+import Encyclopedia from './classes/encyclopedia';
 
 function getAllBooks(): Book[] {
     const books: Book[] = [
@@ -282,3 +283,16 @@ const formatUniversityLabrarian = new UniversityLibrarian();
 formatUniversityLabrarian.name = 'Format labrarian';
 const formatUniversityLabrarianName = formatUniversityLabrarian.name;
 console.log(formatUniversityLabrarianName);
+
+// Task 27
+console.log('Task 27:');
+const copiesEncyclopedia = new Encyclopedia(1, 'PositiveEncyclopedia', 2019);
+try {
+    copiesEncyclopedia.copies = 10;
+    copiesEncyclopedia.copies = 0;
+    copiesEncyclopedia.copies = 4;
+    copiesEncyclopedia.copies = 5;
+} catch (exeption) {
+    console.log(exeption);
+}
+console.log(copiesEncyclopedia);

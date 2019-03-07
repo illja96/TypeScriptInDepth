@@ -88,4 +88,16 @@ function makeProperty<T>(prototype: any, propertyName: string, getTransformer: (
         enumerable: true,
         configurable: true
     });
-}  
+}
+
+export function positiveInteger() {
+    return function (target: any, propertyKey: string) {
+        makeProperty(target, propertyKey, value => value, value => {
+            if(value < 1 || !Number.isInteger(value)) {
+                throw 'Property should be more than 1 and integer';
+            }
+
+            return value;
+        });
+    };
+}
