@@ -37,4 +37,8 @@ export interface ShelfItem {
     title: string;
 }
 
+export interface LibMgrCallback {
+    (category: Category, titles: string[]): void;
+}
+
 export interface Logger extends DamageLogger { };

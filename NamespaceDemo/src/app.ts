@@ -3,106 +3,8 @@ import util = Utility.Fees;
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './intefaces';
 import { RefBook, ReferenceItem, UniversityLibrarian, Shelf } from './classes/index';
-import { purge } from './lib/utility-functions';
+import { purge, getAllBooks, getBookTitlesByCategory, logFirstAvailable, getBookById, logBookTitles, createCustomerId, createCustomer, сheckoutBooks, getTitles, printBook, DamageLoggerImplementation, getBooksByCategory, logCategorySearch } from './lib/utility-functions';
 import Encyclopedia from './classes/encyclopedia';
-
-function getAllBooks(): Book[] {
-    const books: Book[] = [
-        { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JS },
-        { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false, category: Category.JS },
-        { id: 3, title: 'CSS Secrets', author: 'Lea Verou', available: true, category: Category.CSS },
-        { id: 4, title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', available: true, category: Category.JS }
-    ];
-
-    return books;
-}
-
-function logFirstAvailable(books: any[] = getAllBooks()): void {
-    console.log(`Books count: ${books.length}`);
-
-    for (const book of books) {
-        if (!book.available) {
-            continue;
-        }
-
-        console.log(`First available book name: ${book.title}`);
-        break;
-    }
-}
-
-function getBookTitlesByCategory(category: Category = Category.JS): string[] {
-    const books = getAllBooks();
-    const booksInCategory = new Array<string>();
-
-    for (const book of books) {
-        if (book.category != category) {
-            continue;
-        }
-
-        booksInCategory.push(book.title);
-    }
-
-    return booksInCategory;
-}
-
-function logBookTitles(bookTitles: string[]): void {
-    console.log(bookTitles);
-}
-
-function getBookById(id: number): Book {
-    const books = getAllBooks();
-    const book = books.find((x) => x.id == id);
-
-    return book;
-}
-
-function createCustomerId(id: number, name: string): string {
-    return `${id} ${name}`;
-}
-
-function createCustomer(name: string, age?: number, city?: string) {
-    console.log(`${name} ${age ? age : ''} ${city ? city : ''}`);
-}
-
-function сheckoutBooks(customer: string, bookIds: number[]): string[] {
-    const avaliableBooks = new Array<string>();
-
-    for (const bookId of bookIds) {
-        const book = getBookById(bookId);
-        if (!book.available) {
-            continue;
-        }
-
-        avaliableBooks.push(book.title);
-    }
-
-    return avaliableBooks;
-}
-
-function getTitles(authorOrAvaliable: string | boolean): string[] {
-    const bookTitles = new Array<string>();
-
-    const books = getAllBooks();
-    for (const book of books) {
-        if (typeof authorOrAvaliable === 'string' && book.title === authorOrAvaliable) {
-            bookTitles.push(book.title);
-        }
-
-        if (typeof authorOrAvaliable === 'boolean' && book.available == authorOrAvaliable) {
-            bookTitles.push(book.title);
-        }
-    }
-
-    return bookTitles;
-}
-
-function printBook(book: Book) {
-    console.log(`${book.title} by ${book.author}`);
-}
-
-function DamageLoggerImplementation(reason: string): void {
-    console.log(`Damaged: ${reason}`)
-}
 
 // Task 1
 console.log('Task 1:');
@@ -296,3 +198,8 @@ try {
     console.log(exeption);
 }
 console.log(copiesEncyclopedia);
+
+// Task 28
+console.log('Task 28:');
+getBooksByCategory(Category.JS, logCategorySearch);
+getBooksByCategory(Category.Software, logCategorySearch);
