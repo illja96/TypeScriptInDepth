@@ -1,10 +1,12 @@
 import { Librarian } from '../intefaces';
-import { sealed, logger, writable, logParameter } from '../decorators';
+import { sealed, logger, writable, logParameter, format } from '../decorators';
 
 @sealed
 @logger
 export class UniversityLibrarian implements Librarian {
+    @format()
     name: string;
+    
     email: string;
     department: string;
     

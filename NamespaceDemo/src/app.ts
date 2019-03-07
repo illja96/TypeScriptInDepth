@@ -272,6 +272,13 @@ timeoutEncyclopedia.printItem();
 
 // Task 25
 console.log('Task 25:');
-const logedUniversityLabrarian = new UniversityLibrarian();
-logedUniversityLabrarian.name = 'LogLabrarian';
-logedUniversityLabrarian.assistCustomer('LogAnn');
+const logUniversityLabrarian = new UniversityLibrarian();
+logUniversityLabrarian.name = 'Log labrarian';
+logUniversityLabrarian.assistCustomer('Ann');
+
+// Task 26
+console.log('Task 26:');
+const formatUniversityLabrarian = new UniversityLibrarian();
+formatUniversityLabrarian.name = 'Format labrarian';
+const formatUniversityLabrarianName = formatUniversityLabrarian.name;
+console.log(formatUniversityLabrarianName);
