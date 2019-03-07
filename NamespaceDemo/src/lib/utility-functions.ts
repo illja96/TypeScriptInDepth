@@ -108,7 +108,7 @@ export function getBooksByCategory(category: Category, callback: LibMgrCallback)
         try {
             const bookTitlesByCategory = getBookTitlesByCategory(category);
             if (bookTitlesByCategory.length == 0) {
-                throw new Error('No books found.');
+                throw new Error('No books found');
             }
 
             callback(null, bookTitlesByCategory);
@@ -125,4 +125,23 @@ export function logCategorySearch(category: Category, titles: string[]): void {
     } else {
         logBookTitles(titles);
     }
+}
+
+export function getBooksByCategoryPromise(category: Category): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const bookTitlesByCategory = getBookTitlesByCategory(category);
+
+            if (bookTitlesByCategory.length == 0) {
+                reject('No books found');
+            } else {
+                resolve(bookTitlesByCategory);
+            }
+        }, 2000);
+    });
+}
+
+export async function logSearchResults(category: Category) {
+    const foundBooks = await getBooksByCategoryPromise(category);
+    console.log(foundBooks);
 }

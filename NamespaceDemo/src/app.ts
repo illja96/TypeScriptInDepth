@@ -3,7 +3,7 @@ import util = Utility.Fees;
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './intefaces';
 import { RefBook, ReferenceItem, UniversityLibrarian, Shelf } from './classes/index';
-import { purge, getAllBooks, getBookTitlesByCategory, logFirstAvailable, getBookById, logBookTitles, createCustomerId, createCustomer, сheckoutBooks, getTitles, printBook, DamageLoggerImplementation, getBooksByCategory, logCategorySearch } from './lib/utility-functions';
+import { purge, getAllBooks, getBookTitlesByCategory, logFirstAvailable, getBookById, logBookTitles, createCustomerId, createCustomer, сheckoutBooks, getTitles, printBook, DamageLoggerImplementation, getBooksByCategory, logCategorySearch, getBooksByCategoryPromise, logSearchResults } from './lib/utility-functions';
 import Encyclopedia from './classes/encyclopedia';
 
 // Task 1
@@ -203,3 +203,19 @@ console.log(copiesEncyclopedia);
 console.log('Task 28:');
 getBooksByCategory(Category.JS, logCategorySearch);
 getBooksByCategory(Category.Software, logCategorySearch);
+
+// Task 29
+console.log('Task 29:');
+getBooksByCategoryPromise(Category.JS)
+    .then((bookTitles: string[]) => console.log(bookTitles.length))
+    .catch((reason: any) => console.log(reason));
+getBooksByCategoryPromise(Category.Software)
+    .then((bookTitles: string[]) => console.log(bookTitles.length))
+    .catch((reason: any) => console.log(reason));
+
+// Task 30
+console.log('Task 30:');
+console.log('Beginning search...');
+logSearchResults(Category.JS)
+    .catch(reason => console.log(reason));
+console.log('Search submitted...');
