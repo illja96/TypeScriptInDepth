@@ -39,3 +39,18 @@ export function timeout(millis: number): any {
         return descriptor;
     };
 }
+
+export function logParameter() {
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function Timeout(...args) {
+            for (let i = 0; i < args.length; i++) {
+                console.log(`Method: ${originalMethod.name}, ParamIndex: ${i}, ParamValue: ${args[i]}`);
+            }
+
+            originalMethod.apply(this, args);
+        };
+
+        return descriptor;
+    };
+}

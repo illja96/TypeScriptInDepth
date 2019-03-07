@@ -1,5 +1,5 @@
 import { Librarian } from '../intefaces';
-import { sealed, logger, writable } from '../decorators';
+import { sealed, logger, writable, logParameter } from '../decorators';
 
 @sealed
 @logger
@@ -8,6 +8,7 @@ export class UniversityLibrarian implements Librarian {
     email: string;
     department: string;
     
+    @logParameter()
     assistCustomer(custName: string): void {
         console.log(`${this.name} is assisting ${custName}`);
     }
