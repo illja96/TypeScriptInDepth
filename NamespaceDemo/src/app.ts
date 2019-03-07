@@ -269,3 +269,9 @@ catch (exeption) {
 console.log('Task 24:');
 const timeoutEncyclopedia = new RefBook(1, 'RefBook', 2019);
 timeoutEncyclopedia.printItem();
+
+// Task 25
+console.log('Task 25:');
+const logedUniversityLabrarian = new UniversityLibrarian();
+logedUniversityLabrarian.name = 'LogLabrarian';
+logedUniversityLabrarian.assistCustomer('LogAnn');
